@@ -145,7 +145,6 @@ a:hover{
 }
 
 @media (max-width: 917px) {
-  
   .main-box{
     flex-direction: column;    
     width: 80%;
@@ -182,7 +181,12 @@ a:hover{
     aspect-ratio: 3/1;
     font-size: 50px;
   }
+
   @media (max-width: 470px){
+    .initial-screen .logo {
+      width: 230px;
+    }
+
     .main-box-buttons > a{
       font-size: 30px;
     } 
