@@ -75,7 +75,6 @@ main{
     aspect-ratio: 16/9;
     gap: 30px;
     padding: 30px 90px 30px 90px;
-    display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.288);
@@ -84,12 +83,20 @@ main{
 .main-box-logo{
     width: 50%;
     height: 80%;
-    font-size: 22px;
+    
 }
 
 .main-box-logo > img{
   width: 40%;
   height: auto;
+}
+
+.main-box-logo h1 {
+  font-size: clamp(0.7rem, 5vw, 2.5rem); /* Tamanho da fonte ajustável, mas dentro de limites */
+}
+
+.main-box-logo p {
+  font-size: clamp(1rem, 2vw, 1.3rem); /* Ajusta o texto da pergunta, mantendo limites */
 }
 
 .main-box-buttons{
@@ -119,42 +126,66 @@ main{
   background-color: #CB6B6B;
 }
 
-/* telas */
-/* Celulares */
-@media (max-width: 600px) {
-  .main-box-logo{
-    font-size: 11px;
-  }
-
-  .main-box-buttons > a{
-    font-size: 30px;
-  }
+a:hover{
+  opacity: 0.8;
 }
 
-/* Tablets */
-@media (min-width: 601px) and (max-width: 900px) {
-  
-  .main-box-logo{
-    font-size: 11px;
-  }
+/* Telas ---- */
 
-  .main-box-buttons > a{
-    font-size: 30px;
-  }
-
+@media (max-width: 1381px) {
+  .main-box-logo h1 {
+    font-size: 2rem;
+  } 
 }
 
-/* Monitores pequenos */
-@media (min-width: 901px) and (max-width: 1200px) {
+@media (max-width: 1081px) {
+  .main-box-logo h1 {
+    font-size: 1.7rem;
+  } 
+}
+
+@media (max-width: 917px) {
   
-  
+  .main-box{
+    flex-direction: column;    
+    width: 80%;
+    height: auto;
+    padding: 0px;
+  }
 
   .main-box-logo{
-    font-size: 13px;
+    width: 85%;
+    height: 30%;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-box-logo > img{
+    width: 20%;
+    padding-bottom: 10px;
+  }
+
+  .main-box-buttons{
+    width: 90%;
+    height: auto;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 15px;
   }
 
   .main-box-buttons > a{
-    font-size: 30px;
+    aspect-ratio: 3/1;
+    font-size: 50px;
+  }
+  @media (max-width: 470px){
+    .main-box-buttons > a{
+      font-size: 30px;
+    } 
   }
 
 }
