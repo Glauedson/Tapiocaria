@@ -92,11 +92,11 @@ main{
 }
 
 .main-box-logo h1 {
-  font-size: clamp(0.7rem, 5vw, 2.5rem); /* Tamanho da fonte ajustável, mas dentro de limites */
+  font-size: clamp(0.7rem, 5vw, 2.5rem); 
 }
 
 .main-box-logo p {
-  font-size: clamp(1rem, 2vw, 1.3rem); /* Ajusta o texto da pergunta, mantendo limites */
+  font-size: clamp(1rem, 2vw, 1.3rem);
 }
 
 .main-box-buttons{
