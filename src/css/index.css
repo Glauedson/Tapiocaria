@@ -82,8 +82,6 @@ main{
 
 .main-box-logo{
     width: 50%;
-    height: 80%;
-    
 }
 
 .main-box-logo > img{
@@ -183,13 +181,21 @@ a:hover{
   }
 
   @media (max-width: 470px){
+    .main-box-logo{
+      padding: 0px 0px 15px 0px;
+    }
+
     .initial-screen .logo {
       width: 230px;
     }
 
     .main-box-buttons > a{
       font-size: 30px;
-    } 
+    }   
+
+    .main-box-buttons{
+      padding: 0px;
+    }
   }
 
 }
