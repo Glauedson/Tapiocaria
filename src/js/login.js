@@ -4,9 +4,9 @@ const clearButton = document.getElementById('clear');
 
 buttons.forEach(button => {
   button.addEventListener('click', () => {
-    if (display.textContent.replace(/-/g, '').length < 11) { // Limita a 11 dígitos
+    if (display.textContent.replace(/-/g, '').length < 11) { 
       display.textContent = display.textContent.replace(/-/, '') + button.value;
-      display.textContent = display.textContent.padEnd(13, ''); // Preenche com '-'
+      display.textContent = display.textContent.padEnd(13, ''); 
     }
   });
 });
