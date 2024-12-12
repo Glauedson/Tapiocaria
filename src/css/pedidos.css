@@ -59,17 +59,39 @@ main{
 
 .category{
     display: flex;
+    text-decoration: none;
+    color: black;
     width: 32%;
     height: 240px;
     background-color: white;
     text-align: center;
     flex-direction: column;
     border-radius: 0px 0px 27px 27px;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.123);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.247);
 }
 
 .category-profile{
     width: 100%;
-    background-color: aqua;
     height: 75%;
+    background-position: center;
+    background-size: cover;
+}
+
+#tapioca > .category-profile{
+    background-image: url(/src/assets/image/tapioca_cover.avif);
+}
+
+#cuscuz > .category-profile{
+    background-image: url(/src/assets/image/cuscuz_cover.jpg);
+}
+
+#sanduiche > .category-profile{
+    background-image: url(/src/assets/image/sanduiche_cover.jpg); 
+}
+
+.category-text{
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
