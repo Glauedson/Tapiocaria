@@ -79,15 +79,15 @@ main{
 }
 
 #tapioca > .category-profile{
-    background-image: url(/src/assets/image/tapioca_cover.avif);
+    background-image: url(../assets/image/tapioca_cover.avif);
 }
 
 #cuscuz > .category-profile{
-    background-image: url(/src/assets/image/cuscuz_cover.jpg);
+    background-image: url(../assets/image/cuscuz_cover.jpg);
 }
 
 #sanduiche > .category-profile{
-    background-image: url(/src/assets/image/sanduiche_cover.jpg); 
+    background-image: url(../assets/image/sanduiche_cover.jpg); 
 }
 
 .category-text{
