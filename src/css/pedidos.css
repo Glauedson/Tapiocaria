@@ -8,7 +8,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100vw;
+  overflow-y: auto;
 }
 
 *{
@@ -63,7 +63,7 @@ main{
     text-decoration: none;
     color: black;
     width: 32%;
-    height: 240px;
+    height: 40vh;
     background-color: white;
     text-align: center;
     flex-direction: column;
@@ -95,4 +95,69 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.best-sellers-history{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.best-sellers-history > div{
+    height: 45.4vh;
+    flex-grow: 1;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.247);
+    border-radius: 25px;
+}
+
+.best-sellers{
+    background-color: chocolate;
+    flex-basis: 56.5%;
+    max-width: 100%;
+    min-width: 582px;
+}
+
+.best-sellers > a{
+    text-decoration: none;
+    color: black;
+    
+    
+}
+
+.history{
+    background-color: #D9D9D9;
+    flex-basis: 41%;
+    max-width: 100%;
+}
+
+
+@media (max-width: 593px) {
+
+    .category-profile{
+        height: 50%;
+    }
+
+    .category-text{
+        height: 50%;
+    }
+
+    .best-sellers-history > div{
+        height: auto;
+        flex-grow: 1;
+    }
+
+    .best-sellers{
+        min-width: 0;
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+
+    .history{
+        width: 100%;
+        aspect-ratio: 1/1;
+        margin-bottom: 25px;
+    }
 }
