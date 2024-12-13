@@ -120,9 +120,14 @@ main{
     min-width: 582px;
 }
 
-.best-sellers > a{
-    text-decoration: none;
-    color: black;
+.best-sellers a{
+  display: flex; 
+  width: 100%; 
+  height: 100%; 
+  text-align: center; 
+  line-height: 100px; 
+  text-decoration: none;
+  color: black; 
 }
 
 .history{
@@ -131,8 +136,60 @@ main{
     max-width: 100%;
 }
 
+.history > p{
+    padding: 15px 17px 10px 17px;
+}
+
+.space-container{
+    height: 83%;
+    overflow-y: auto;
+    --sb-track-color: #bdb7b7;
+    --sb-thumb-color: #797a76;
+    --sb-size: 8px;
+}
+
+/* Scrollbar personalizada do space-container */
+  
+  .space-container::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+  
+  .space-container::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 8px;
+  }
+  
+  .space-container::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 8px;
+  }
+  
+  @supports not selector(::-webkit-scrollbar) {
+    .space-container {
+        scrollbar-color: var(--sb-thumb-color)
+                       var(--sb-track-color);
+    }
+  }
+
+/* ---------- */
+
+.container-info-history{
+    background-color: white;
+    margin: 0px 17px 10px 17px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
 
 @media (max-width: 593px) {
+
+    main{
+        width: 94%;
+    }
+
+    .category{
+        height: 28vh;
+    }
 
     .category-profile{
         height: 50%;
