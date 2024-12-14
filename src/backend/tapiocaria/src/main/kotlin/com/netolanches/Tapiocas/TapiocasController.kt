@@ -8,7 +8,8 @@ import java.util.Optional
 @RestController
 class TapiocasController(val foodsRepository: FoodsRepository,
                          val filingsRepository: FilingsRepository,
-                         val salesRepository: SalesRepository) {
+                         val salesRepository: SalesRepository,
+                         val tapiocasCategoryRepository: TapiocasCategoryRepository) {
 
   @GetMapping("/food")
   fun getFilingsByFoodId(@RequestParam("id") id: Int = 0): Map<String, Any>{
@@ -33,5 +34,34 @@ class TapiocasController(val foodsRepository: FoodsRepository,
   fun getAllSalesByCpfClient(@RequestParam("cpf") cpf: String): List<Sales>{
     return salesRepository.getAllSalesByCpfClient(cpf);
   }
+
+  @GetMapping("/tapiocas")
+  fun getTapiocaById(@RequestParam(required = false) id: Int?): Any {
+    return if (id != null) {
+      // Busca por ID específico
+      try {
+        val tapioca = tapiocasCategoryRepository.findById(id)
+        if (tapioca.isPresent) {
+          mapOf(
+            "id" to tapioca.get().id,
+            "nome" to tapioca.get().nome,
+            "descricao" to tapioca.get().descricao,
+            "ingredientes" to tapioca.get().ingredientes,
+            "preco" to tapioca.get().preco,
+            "imagemUrl" to tapioca.get().imagemUrl,
+            "avaliacaoEstrela" to tapioca.get().avaliacaoEstrela
+          )
+        } else {
+          mapOf("error" to "Tapioca não encontrada")
+        }
+      } catch (e: Exception) {
+        mapOf("error" to e.message.toString())
+      }
+    } else {
+      tapiocasCategoryRepository.findAll()
+    }
+  }
+
+
 }
 
