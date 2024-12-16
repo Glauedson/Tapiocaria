@@ -1,27 +1,18 @@
-function greetings() {
-    const now = new Date();
-    const hours = now.getHours();
 
-    if (hours >= 0 && hours < 12) return "BOM DIA";
-    else if (hours >= 12 && hours < 18) return "BOA TARDE";
-    else return "BOA NOITE";
-}
+import { setupModal } from './feature/modal.js'
+import { greetings } from './feature/greetings.js'
 
-// Seleciona os elementos
-const modal = document.getElementById("modal");
-const openModalBtn = document.getElementById("openModal");
-const closeModalBtn = document.getElementById("closeModal");
+const categories = document.querySelectorAll(".openModal")
 
-// Abre o modal
-openModalBtn.addEventListener("click", (event) => {
-    event.preventDefault(); // Evita o comportamento padrão do link
-    modal.style.display = "block";
-});
+categories.forEach((category) => {
+    category.addEventListener("click", (event) => {
+        event.preventDefault()
 
-// Fecha o modal
-closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-});
+        const Category = category.getAttribute("value")
 
-// Adiciona a saudação no elemento
-document.getElementById("saudacao").textContent = greetings();
+        setupModal(Category)
+    })
+})
+
+
+greetings()
