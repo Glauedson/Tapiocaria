@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/pedidos.css">
+    <link rel="stylesheet" href="../css/feature/modal.css">
     <link rel="website icon" href="../assets/image/logo1.png">
     <title>Bem-vindo</title>
 </head>
@@ -28,27 +29,129 @@
     <main>
         
         <div class="select-category">
-            <a href="" class="category" id="tapioca">
+            <a href="" class="category1" id="openModal">
                 <div class="category-profile"></div>
                 <div class="category-text">
                     <p>TAPIOCA</p>
                 </div>
             </a>
 
-            <a href="" class="category" id="cuscuz">
+            <a href="" class="category2" id="openModal">
                 <div class="category-profile"></div>
                 <div class="category-text">
                     <p>CUSCUZ</p>
                 </div>
             </a>
 
-            <a href="" class="category" id="sanduiche">
+            <a href="" class="category3" id="openModal">
                 <div class="category-profile"></div>
                 <div class="category-text">
                     <p>SANDUICHE</p>
                 </div>
             </a>
         </div>
+
+
+<!--MODAL DAS CATEGORIAS-->
+<div id="modal" class="modal">
+    
+    <div class="modal-position">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>TAPIOCAS</h2>
+                <span id="closeModal" class="close"><p>X</p></span>
+            </div>
+            <div class="modal-orders-hub">
+                
+                <div class="modal-orders"> <!-- Comida personalizada -->
+                    <div class="orders-text">
+                        <h3>Tapioca Personalizada</h3>
+                        <p style="font-size: 11px;">Monte sua tapioca escolhendo os recheios preferidos.</p>
+                        <div class="price-for-first-order">
+                            <h4 style="background-color: #3E8E41;
+                            padding: 6PX;
+                            color: white;
+                            border-radius: 7px;
+                            width: 160px;
+                            text-align: center;">PREÇO BASE: R$ 1,50</h4>
+                        </div>
+                    </div>
+                    <div class="orders-image"
+                    style="background-image: url(https://cdn.casapraticaqualita.com.br/wp-content/uploads/sites/2/2017/03/shutterstock_2203479243.jpg);
+                    background-position: center;
+                    background-size: cover;"
+                    >
+                    </div>
+                </div>
+
+                <div class="modal-orders"> <!-- Comida do cardapio -->
+                    <div class="orders-text">
+                        <h3>Tapioca Personalizada</h3>
+                        <p style="font-size: 11px;">Monte sua tapioca escolhendo os recheios preferidos.</p>
+                        <div class="price-evaluation" style="display: flex;">
+                            <h3>R$15,00</h3>
+                            <img src="../assets/icons/star-solid.svg" 
+                            alt="estrela de avaliação"
+                            width="19px" 
+                            style="padding-left: 15px;">
+                            <h3>4.8</h3>
+                        </div>
+                    </div>
+                    <div class="orders-image"
+                    style="background-image: url(https://cdn.casapraticaqualita.com.br/wp-content/uploads/sites/2/2017/03/shutterstock_2203479243.jpg);
+                    background-position: center;
+                    background-size: cover;"
+                    >
+                    </div>
+                </div>
+
+                <div class="modal-orders"> <!-- Comida do cardapio -->
+                    <div class="orders-text">
+                        <h3>Tapioca Personalizada</h3>
+                        <p style="font-size: 11px;">Monte sua tapioca escolhendo os recheios preferidos.</p>
+                        <div class="price-evaluation" style="display: flex;">
+                            <h3>R$15,00</h3>
+                            <img src="../assets/icons/star-solid.svg" 
+                            alt="estrela de avaliação"
+                            width="19px" 
+                            style="padding-left: 15px;">
+                            <h3>4.8</h3>
+                        </div>
+                    </div>
+                    <div class="orders-image"
+                    style="background-image: url(https://cdn.casapraticaqualita.com.br/wp-content/uploads/sites/2/2017/03/shutterstock_2203479243.jpg);
+                    background-position: center;
+                    background-size: cover;"
+                    >
+                    </div>
+                </div>
+
+                <div class="modal-orders"> <!-- Comida do cardapio -->
+                    <div class="orders-text">
+                        <h3>Tapioca Personalizada</h3>
+                        <p style="font-size: 11px;">Monte sua tapioca escolhendo os recheios preferidos.</p>
+                        <div class="price-evaluation" style="display: flex;">
+                            <h3>R$15,00</h3>
+                            <img src="../assets/icons/star-solid.svg" 
+                            alt="estrela de avaliação"
+                            width="19px" 
+                            style="padding-left: 15px;">
+                            <h3>4.8</h3>
+                        </div>
+                    </div>
+                    <div class="orders-image"
+                    style="background-image: url(https://cdn.casapraticaqualita.com.br/wp-content/uploads/sites/2/2017/03/shutterstock_2203479243.jpg);
+                    background-position: center;
+                    background-size: cover;"
+                    >
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
         <div class="best-sellers-history">
             
@@ -67,33 +170,7 @@
                         <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
                     </div>
                     
-                    <!--Teste de ScrollBar-->
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-                    <div class="container-info-history">
-                        SANDUICHE MISTO
-                        <p style="font-size: 10px;">PRESUNTO, QUEIJO, TOMATE, ALFACE</p>
-                    </div>
-
-                    <!--Fim do teste-->
+                    
 
                 </div>
             </div>

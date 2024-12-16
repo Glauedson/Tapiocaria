@@ -58,7 +58,7 @@ main{
     padding-top: 15px;
 }
 
-.category{
+.select-category > a{
     display: flex;
     text-decoration: none;
     color: black;
@@ -78,15 +78,15 @@ main{
     background-size: cover;
 }
 
-#tapioca > .category-profile{
+.category1 > .category-profile{
     background-image: url(../assets/image/tapioca_cover.avif);
 }
 
-#cuscuz > .category-profile{
+.category2 > .category-profile{
     background-image: url(../assets/image/cuscuz_cover.jpg);
 }
 
-#sanduiche > .category-profile{
+.category3 > .category-profile{
     background-image: url(../assets/image/sanduiche_cover.jpg); 
 }
 
@@ -206,7 +206,7 @@ main{
         width: 94%;
     }
 
-    .category{
+    .select-category > a{
         height: 28vh;
         box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.404);
     }

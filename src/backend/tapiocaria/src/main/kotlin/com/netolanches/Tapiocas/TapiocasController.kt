@@ -1,15 +1,18 @@
 package com.netolanches.Tapiocas
 
+import org.springframework.data.domain.Sort
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.util.Optional
+import java.text.DecimalFormat
 
 @RestController
-class TapiocasController(val foodsRepository: FoodsRepository,
-                         val filingsRepository: FilingsRepository,
-                         val salesRepository: SalesRepository,
-                         val tapiocasCategoryRepository: TapiocasCategoryRepository) {
+class TapiocasController(
+  val foodsRepository: FoodsRepository,
+  val filingsRepository: FilingsRepository,
+  val salesRepository: SalesRepository,
+  val tapiocasCategoryRepository: TapiocasCategoryRepository
+){
 
   @GetMapping("/food")
   fun getFilingsByFoodId(@RequestParam("id") id: Int = 0): Map<String, Any>{
@@ -35,21 +38,28 @@ class TapiocasController(val foodsRepository: FoodsRepository,
     return salesRepository.getAllSalesByCpfClient(cpf);
   }
 
+
+  //Esse Endpoint é para ser usado na parte de categorias
+  //No caso, esse Endpoint é para categoria de tapiocas
   @GetMapping("/tapiocas")
   fun getTapiocaById(@RequestParam(required = false) id: Int?): Any {
     return if (id != null) {
-      // Busca por ID específico
+
       try {
         val tapioca = tapiocasCategoryRepository.findById(id)
         if (tapioca.isPresent) {
+
+          val formattedPrice = DecimalFormat("#,##0.00").format(tapioca.get().preco)
+
           mapOf(
             "id" to tapioca.get().id,
             "nome" to tapioca.get().nome,
             "descricao" to tapioca.get().descricao,
             "ingredientes" to tapioca.get().ingredientes,
-            "preco" to tapioca.get().preco,
+            "preco" to formattedPrice,
             "imagemUrl" to tapioca.get().imagemUrl,
             "avaliacaoEstrela" to tapioca.get().avaliacaoEstrela
+
           )
         } else {
           mapOf("error" to "Tapioca não encontrada")
@@ -57,9 +67,11 @@ class TapiocasController(val foodsRepository: FoodsRepository,
       } catch (e: Exception) {
         mapOf("error" to e.message.toString())
       }
+
     } else {
-      tapiocasCategoryRepository.findAll()
+      tapiocasCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
     }
+
   }
 
 
