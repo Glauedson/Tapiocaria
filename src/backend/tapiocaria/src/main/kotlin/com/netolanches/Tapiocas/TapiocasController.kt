@@ -71,7 +71,20 @@ class TapiocasController(
       }
 
     } else {
-      tapiocasCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
+      val tapiocas = tapiocasCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
+      val formattedTapiocas = tapiocas.map {
+        mapOf(
+          "id" to it.id,
+          "nome" to it.nome,
+          "descricao" to it.descricao,
+          "ingredientes" to it.ingredientes,
+          "preco" to DecimalFormat("#0.00").format(it.preco),
+          "imagemUrl" to it.imagemUrl,
+          "avaliacaoEstrela" to it.avaliacaoEstrela
+        )
+      }
+
+      return formattedTapiocas
     }
 
   }

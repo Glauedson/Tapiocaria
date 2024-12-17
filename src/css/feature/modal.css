@@ -70,6 +70,7 @@
 .orders-text{
     justify-content: space-between;
     display: flex;
+    width: 57%;
     flex-direction: column;
 }
 
@@ -120,10 +121,6 @@
         /* Animação */
         transform: translateY(100%);
         animation: slideUp 0.4s ease-out forwards;
-    }
-
-    .orders-text{
-        width: 57%;
     }
 
     .orders-image{
