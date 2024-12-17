@@ -1,12 +1,14 @@
 package com.netolanches.Tapiocas
 
 import org.springframework.data.domain.Sort
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.text.DecimalFormat
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:5500"])
 class TapiocasController(
   val foodsRepository: FoodsRepository,
   val filingsRepository: FilingsRepository,
@@ -41,7 +43,7 @@ class TapiocasController(
 
   //Esse Endpoint é para ser usado na parte de categorias
   //No caso, esse Endpoint é para categoria de tapiocas
-  @GetMapping("/tapiocas")
+  @GetMapping("/Tapiocas")
   fun getTapiocaById(@RequestParam(required = false) id: Int?): Any {
     return if (id != null) {
 
