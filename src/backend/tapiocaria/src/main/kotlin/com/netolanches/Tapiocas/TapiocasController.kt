@@ -13,7 +13,9 @@ class TapiocasController(
   val foodsRepository: FoodsRepository,
   val filingsRepository: FilingsRepository,
   val salesRepository: SalesRepository,
-  val tapiocasCategoryRepository: TapiocasCategoryRepository
+  val tapiocasCategoryRepository: TapiocasCategoryRepository,
+  val cuscuzCategoryRepository: CuscuzCategoryRepository,
+  val sanduichesCategoryRepository: SanduichesCategoryRepository
 ){
 
   @GetMapping("/food")
@@ -89,6 +91,98 @@ class TapiocasController(
 
   }
 
+  //puxa todos os dados do banco de cuscuz
+  @GetMapping("/Cuscuz")
+  fun getCuscuzById(@RequestParam(required = false) id: Int?): Any {
+    return if (id != null) {
+
+      try {
+        val cuscuz = cuscuzCategoryRepository.findById(id)
+        if (cuscuz.isPresent) {
+
+          val formattedPrice = DecimalFormat("#,##0.00").format(cuscuz.get().preco)
+
+          mapOf(
+            "id" to cuscuz.get().id,
+            "nome" to cuscuz.get().nome,
+            "descricao" to cuscuz.get().descricao,
+            "ingredientes" to cuscuz.get().ingredientes,
+            "preco" to formattedPrice,
+            "imagemUrl" to cuscuz.get().imagemUrl,
+            "avaliacaoEstrela" to cuscuz.get().avaliacaoEstrela
+          )
+        } else {
+          mapOf("error" to "Cuscuz não encontrado")
+        }
+      } catch (e: Exception) {
+        mapOf("error" to e.message.toString())
+      }
+
+    } else {
+      val cuscuz = cuscuzCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
+      val formattedCuscuz = cuscuz.map {
+        val formattedPrice = DecimalFormat("#,##0.00").format(it.preco)
+
+        mapOf(
+          "id" to it.id,
+          "nome" to it.nome,
+          "descricao" to it.descricao,
+          "ingredientes" to it.ingredientes,
+          "preco" to formattedPrice,
+          "imagemUrl" to it.imagemUrl,
+          "avaliacaoEstrela" to it.avaliacaoEstrela
+        )
+      }
+
+      return formattedCuscuz
+    }
+  }
+
+
+  @GetMapping("/Sanduiches")
+  fun getSanduicheById(@RequestParam(required = false) id: Int?): Any {
+    return if (id != null) {
+
+      try {
+        val sanduiches = sanduichesCategoryRepository.findById(id)
+        if (sanduiches.isPresent) {
+
+          val formattedPrice = DecimalFormat("#,##0.00").format(sanduiches.get().preco)
+
+          mapOf(
+            "id" to sanduiches.get().id,
+            "nome" to sanduiches.get().nome,
+            "descricao" to sanduiches.get().descricao,
+            "ingredientes" to sanduiches.get().ingredientes,
+            "preco" to formattedPrice,
+            "imagemUrl" to sanduiches.get().imagemUrl,
+            "avaliacaoEstrela" to sanduiches.get().avaliacaoEstrela
+
+          )
+        } else {
+          mapOf("error" to "Sanduiche não encontrado")
+        }
+      } catch (e: Exception) {
+        mapOf("error" to e.message.toString())
+      }
+
+    } else {
+      val sanduiches = sanduichesCategoryRepository.findAll(Sort.by(Sort.Direction.ASC, "id"))
+      val formattedSanduiches = sanduiches.map {
+        mapOf(
+          "id" to it.id,
+          "nome" to it.nome,
+          "descricao" to it.descricao,
+          "ingredientes" to it.ingredientes,
+          "preco" to DecimalFormat("#0.00").format(it.preco),
+          "imagemUrl" to it.imagemUrl,
+          "avaliacaoEstrela" to it.avaliacaoEstrela
+        )
+      }
+
+      return formattedSanduiches
+    }
+  }
 
 }
 

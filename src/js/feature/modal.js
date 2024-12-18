@@ -7,10 +7,9 @@ export async function setupModal(Category) {
     const modalHeader = document.getElementById("modal-header-text").innerHTML = `<h2>${Category}</h2>`
     const modalOrdersHub = document.getElementById("modal-orders-hub")
     
-    const API = await fetch(`http://localhost:8080/${Category}`)
-    const data = await API.json()
+    var API = await fetch(`http://localhost:8080/${Category}`)
+    var data = await API.json()
 
-    console.log(Category) 
     for ( let i = 0; i < data.length; i++) {
 
         if ( data[i].id === 1 ) {
@@ -31,7 +30,7 @@ export async function setupModal(Category) {
                             </div>
                         </div>
                         <div class="orders-image"
-                        style="background-image: url(https://cdn.casapraticaqualita.com.br/wp-content/uploads/sites/2/2017/03/shutterstock_2203479243.jpg);
+                        style="background-image: url(${data[i].imagemUrl});
                         background-position: center;
                         background-size: cover; height: 100%;"
                         >

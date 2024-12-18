@@ -114,7 +114,9 @@ main{
 }
 
 .best-sellers{
-    background-color: chocolate;
+    background-image: url(../assets/image/banner-best.png);
+    background-size: cover;
+    background-position: center;
     flex-basis: 56.5%;
     max-width: 100%;
     min-width: 582px;

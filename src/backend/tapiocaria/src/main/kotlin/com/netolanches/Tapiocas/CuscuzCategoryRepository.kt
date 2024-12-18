@@ -6,8 +6,8 @@ import jakarta.persistence.Table
 import org.springframework.data.jpa.repository.JpaRepository
 
 @Entity
-@Table(name = "tapiocas")
-data class TapiocaCategoryRepository(
+@Table(name = "cuscuz")
+data class CuscuzsCategoryRepository(
     @Id val id: Int,
     val nome: String,
     val descricao: String,
@@ -17,6 +17,6 @@ data class TapiocaCategoryRepository(
     val avaliacaoEstrela: Float
 )
 
-interface TapiocasCategoryRepository : JpaRepository<TapiocaCategoryRepository, Int> {
-    fun findByNome(nome: String): TapiocaCategoryRepository?
+interface CuscuzCategoryRepository : JpaRepository<CuscuzsCategoryRepository, Int> {
+    fun findByNome(nome: String): CuscuzsCategoryRepository?
 }
