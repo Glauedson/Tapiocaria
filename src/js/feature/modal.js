@@ -10,12 +10,11 @@ export async function setupModal(Category) {
     var API = await fetch(`http://localhost:8080/${Category}`)
     var data = await API.json()
 
-    for ( let i = 0; i < data.length; i++) {
-
-        if ( data[i].id === 1 ) {
-         
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].id === 1) {
             modalOrdersHub.innerHTML += `
-                <a href="#" style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
+                <a href="/src/html/pedidosDetalhes.html?category=${Category}&id=${data[i].id}"
+                   style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
                     <div class="modal-orders"> <!-- Comida personalizada -->
                         <div class="orders-text">
                             <h3>${data[i].nome}</h3>
@@ -30,19 +29,17 @@ export async function setupModal(Category) {
                             </div>
                         </div>
                         <div class="orders-image"
-                        style="background-image: url(${data[i].imagemUrl});
-                        background-position: center;
-                        background-size: cover; height: 100%;"
-                        >
+                            style="background-image: url(${data[i].imagemUrl});
+                            background-position: center;
+                            background-size: cover; height: 100%;">
                         </div>
                     </div>
                 </a>
             `
-
         } else {
-            
             modalOrdersHub.innerHTML += `
-                <a href="#" style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
+                <a href="/src/html/pedidosDetalhes.html?category=${Category}&id=${data[i].id}" 
+                   style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
                     <div class="modal-orders"> <!-- Comida do cardápio -->
                         <div class="orders-text">
                             <h3>${data[i].nome}</h3>
@@ -64,12 +61,11 @@ export async function setupModal(Category) {
                     </div>
                 </a>
             `
-           
         }
     }
-    
+
     closeModalBtn.addEventListener("click", () => {
         modal.style.display = "none"
         modalOrdersHub.innerHTML = ""
-    })
+    });
 }
