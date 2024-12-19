@@ -1,11 +1,12 @@
 package com.netolanches.Tapiocas
 
 import org.springframework.data.domain.Sort
-import org.springframework.web.bind.annotation.CrossOrigin
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
 import java.text.DecimalFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:5500"])
@@ -17,6 +18,44 @@ class TapiocasController(
   val cuscuzCategoryRepository: CuscuzCategoryRepository,
   val sanduichesCategoryRepository: SanduichesCategoryRepository
 ){
+
+  @PostMapping("/payment")
+  fun createSale(@RequestBody saleRequest: SaleRequest): ResponseEntity<Any> {
+    return try {
+      // Validar os dados
+      if (saleRequest.price <= 0) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(mapOf("error" to "Preço inválido"))
+      }
+      if (saleRequest.cpf.isEmpty()) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+          .body(mapOf("error" to "CPF não pode ser vazio"))
+      }
+
+      // Formatar a data de venda
+      val formattedDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+
+      // Lógica de criação da venda
+      val newSale = Sales(
+        id = 0,  // O ID será gerado automaticamente
+        idfood = saleRequest.idfood,
+        cpf = saleRequest.cpf,
+        datesale = formattedDate,  // Data formatada
+        description = saleRequest.description,
+        price = saleRequest.price
+      )
+
+      // Salvar a venda no banco de dados
+      salesRepository.save(newSale)
+
+      ResponseEntity.ok(mapOf("message" to "Venda registrada com sucesso", "sale" to newSale))
+    } catch (e: Exception) {
+      e.printStackTrace()  // Mostra a stack trace no log do servidor
+      ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .body(mapOf("error" to "Erro ao registrar venda", "details" to e.message))
+    }
+  }
+
 
   @GetMapping("/food")
   fun getFilingsByFoodId(@RequestParam("id") id: Int = 0): Map<String, Any>{

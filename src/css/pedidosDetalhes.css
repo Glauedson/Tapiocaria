@@ -145,3 +145,18 @@ hr{
 .pay-button:hover {
     background-color: #2C6E30;
 }
+
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+}
