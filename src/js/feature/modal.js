@@ -35,6 +35,32 @@ export async function setupModal(Category) {
         modalOrdersHub.innerHTML = ""
 
         for (let i = 0; i < data.length; i++) {
+            if (data[i].id === 1) {
+                modalOrdersHub.innerHTML += `
+                    <a href="/src/html/pedidosDetalhes.html?category=${Category}&id=${data[i].id}"
+                       style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
+                        <div class="modal-orders"> <!-- Comida personalizada -->
+                            <div class="orders-text">
+                                <h3>${data[i].nome}</h3>
+                                <p style="font-size: 11px;">${data[i].descricao}</p>
+                                <div class="price-for-first-order">
+                                    <h4 style="background-color: #3E8E41;
+                                    padding: 6PX;
+                                    color: white;
+                                    border-radius: 7px;
+                                    width: 160px;
+                                    text-align: center;">PREÇO BASE: R$ ${data[i].preco}</h4>
+                                </div>
+                            </div>
+                            <div class="orders-image"
+                                style="background-image: url(${data[i].imagemUrl});
+                                background-position: center;
+                                background-size: cover; height: 100%;">
+                            </div>
+                        </div>
+                    </a>
+                `
+            } else {
             modalOrdersHub.innerHTML += `
                 <a href="/src/html/pedidosDetalhes.html?category=${Category}&id=${data[i].id}" 
                    style="display: block; width: 100%; height: 100%; text-decoration: none; color: black;">
@@ -58,6 +84,7 @@ export async function setupModal(Category) {
                     </div>
                 </a>
             `
+            }
         }
     } catch (error) {
         setTimeout(() => {
